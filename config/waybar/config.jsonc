@@ -1,0 +1,187 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "spacing": 8,
+
+  "modules-left": [
+    "hyprland/workspaces",
+    "mpris"
+  ],
+
+  "modules-center": [
+    "clock"
+  ],
+
+  "modules-right": [
+    "custom/voxtype",
+    "custom/clar-focus",
+    "custom/idle-indicator",
+    "custom/notification-silencing-indicator",
+    "group/hardware",
+    "group/tray-expander"
+  ],
+
+  "hyprland/workspaces": {
+    "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({workspace=\"e-1\"})'",
+    "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({workspace=\"e+1\"})'",
+    "format": "{name}",
+    "tooltip": false,
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
+
+  "mpris": {
+    "format": "{player_icon} {title} - {artist}",
+    "format-paused": "{status_icon} <i>{title} - {artist}</i>",
+    "player-icons": {
+      "default": "🎵",
+      "spotify": " ",
+      "firefox": " ",
+      "chromium": " ",
+      "chrome": " ",
+      "zen": " ",
+      "brave": " "
+    },
+    "status-icons": {
+      "paused": "󰏤 "
+    },
+    "ignored-players": [],
+    "max-length": 35,
+    "on-scroll-up": "waybar-mpris-scroll previous",
+    "on-scroll-down": "waybar-mpris-scroll next",
+    "smooth-scrolling-threshold": 0.1
+  },
+
+  "clock": {
+    "format": " {:%H:%M}",
+    "format-alt": " {0:%d %B %Y} - <b>{0:%A}</b>",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<b>{}</b>",
+        "days": "{}",
+        "weeks": "<b>W{}</b>",
+        "weekdays": "<b>{}</b>",
+        "today": "<b><u>{}</u></b>"
+      }
+    },
+    "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
+  },
+
+  "group/hardware": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+      "network",
+      "bluetooth",
+      "battery"
+    ]
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "headset": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "omarchy-launch-audio",
+    "on-click-right": "pamixer -t",
+    "scroll-step": 5
+  },
+
+  "network": {
+    "format": "{icon}",
+    "format-wifi": "",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "on-click": "/home/clar/.local/bin/waybar-launch-nmtui"
+  },
+
+  "bluetooth": {
+    "format": "",
+    "format-connected": " {num_connections}",
+    "format-disabled": "󰂲",
+    "on-click": "omarchy-launch-bluetooth",
+    "tooltip-format": "{controller_alias}\t{controller_address}"
+  },
+
+  "battery": {
+    "interval": 10,
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-full": " {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "on-click": "omarchy-menu power"
+  },
+
+  "custom/voxtype": {
+    "exec": "omarchy-voxtype-status",
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "recording": "",
+      "transcribing": ""
+    },
+    "interval": 1
+  },
+
+  "group/tray-expander": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "tray-child",
+      "transition-left-to-right": false
+    },
+    "modules": ["custom/expand-icon", "tray"]
+  },
+
+  "custom/expand-icon": {
+    "format": "",
+    "tooltip": false
+  },
+
+  "custom/idle-indicator": {
+    "on-click": "omarchy-toggle-idle",
+    "exec": "$OMARCHY_PATH/default/waybar/indicators/idle.sh",
+    "signal": 9,
+    "return-type": "json",
+    "format": "{icon}"
+  },
+
+  "custom/notification-silencing-indicator": {
+    "on-click": "omarchy-toggle-notification-silencing",
+    "exec": "$OMARCHY_PATH/default/waybar/indicators/notification-silencing.sh",
+    "signal": 10,
+    "return-type": "json",
+    "format": "{icon}"
+  },
+
+  "custom/clar-focus": {
+    "exec": "~/.local/bin/clar-focus-waybar status",
+    "return-type": "json",
+    "interval": 1,
+    "signal": 12,
+    "on-click": "~/.local/bin/clar-focus-waybar open",
+    "on-click-right": "~/.local/bin/clar-focus-waybar toggle-pomodoro",
+    "on-click-middle": "~/.local/bin/clar-focus-waybar toggle-focus",
+    "tooltip": true
+  },
+
+  "tray": {
+    "icon-size": 14,
+    "spacing": 8
+  }
+}

@@ -1,0 +1,18 @@
+# Fish universal variables — example template
+#
+# The real `fish_variables` file is intentionally NOT tracked in this repo:
+# fish stores exported secrets (API keys) in it verbatim.
+#
+# Do not copy this file over your existing `fish_variables` — fish manages that
+# file itself and rewrites it on change. Instead, set the values you need once,
+# from an interactive shell:
+#
+#   set -Ux OMNIROUTE_API_KEY "your-api-key-here"
+#
+# To confirm what is currently set:
+#
+#   set -U
+#
+# To remove one:
+#
+#   set -e OMNIROUTE_API_KEY

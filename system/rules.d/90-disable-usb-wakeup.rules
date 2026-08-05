@@ -1,0 +1,2 @@
+# Xenta/Beken 2.4G kablosuz alici (1d57:fa60) - spurious wakeup engelle
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="1d57", ATTR{idProduct}=="fa60", ATTR{power/wakeup}="disabled"

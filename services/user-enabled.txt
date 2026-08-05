@@ -1,0 +1,14 @@
+appimagelauncherd.service                enabled enabled
+omarchy-recover-internal-monitor.service enabled enabled
+psd.service                              enabled enabled
+swayosd-server.service                   enabled enabled
+wireplumber.service                      enabled enabled
+xdg-user-dirs.service                    enabled enabled
+xsettingsd.service                       enabled enabled
+gnome-keyring-daemon.socket              enabled enabled
+p11-kit-server.socket                    enabled enabled
+pipewire-pulse.socket                    enabled enabled
+pipewire.socket                          enabled enabled
+hyprland-update.timer                    enabled enabled
+omarchy-battery-monitor.timer            enabled enabled
+omarchy-theme-auto.timer                 enabled enabled

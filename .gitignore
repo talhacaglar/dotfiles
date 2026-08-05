@@ -1,0 +1,152 @@
+# Dotfiles .gitignore
+# Sensitive and private files that should never be committed
+
+# SSH keys and configs
+.ssh/
+*.key
+*.pem
+*.pub
+authorized_keys
+known_hosts
+.ssh/config
+
+# Shell variable stores that hold exported secrets
+config/fish/fish_variables
+
+# GPG keys
+.gnupg/
+*.gpg
+*.asc
+
+# Claude AI credentials and session data
+.claude.json
+.claude.json.backup
+.config/Claude/
+
+# Shell history
+.bash_history
+.zsh_history
+.history
+
+# Editor temp/history files
+.viminfo
+.viminfo.tmp
+*~
+.swp
+.swo
+
+# Cache directories
+.cache/
+.config/*/Cache/
+.config/*/cache/
+.config/*/CachedData/
+
+# Local data
+.local/
+.local/share/
+
+# User directories (personal data)
+Applications/
+Documents/
+Downloads/
+Music/
+Pictures/
+Videos/
+Projects/
+
+# Android SDK
+.android/
+
+# Kimi Code session data
+.kimi-code/
+
+# Local backup copies of configs (timestamped .bak files)
+*.bak
+*.bak.*
+*.bak-*
+
+# Browser data
+.config/chromium*/
+.config/chrome*/
+.config/zen*/
+.config/BraveSoftware/
+.config/Vivaldi/
+
+# App data with credentials
+.config/Bitwarden/
+.config/Signal/
+.config/discord/
+.config/Slack/
+.config/TelegramDesktop/
+.config/Proton*/
+.config/obsidian/
+
+# IDE/Editor workspace data
+.config/Code/User/workspaceStorage/
+.config/Code/CachedData/
+.config/Code/logs/
+.config/VSCodium/
+.config/JetBrains/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Environment files with secrets
+.env
+.env.local
+.env.*.local
+
+# Key/certificate files
+*.crt
+*.p12
+*.pfx
+*.cer
+*.der
+
+# Files with sensitive names
+*token*
+*secret*
+*password*
+*auth*
+*credential*
+*api_key*
+*apikey*
+
+# Log files
+*.log
+logs/
+
+# Package manager caches
+.npm/
+.yarn/
+.pnpm-store/
+.cargo/
+.go/
+
+# Build artifacts
+dist/
+build/
+*.o
+*.so
+*.dll
+*.exe
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# IDE specific
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

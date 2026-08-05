@@ -1,0 +1,11 @@
+Wed 2026-08-05 09:47:19 +03     32min Wed 2026-08-05 08:47:19 +03 27min ago snapper-cleanup.timer            snapper-cleanup.service
+Wed 2026-08-05 10:00:00 +03     44min Wed 2026-08-05 09:00:03 +03 15min ago snapper-timeline.timer           snapper-timeline.service
+Wed 2026-08-05 10:30:16 +03  1h 15min Tue 2026-08-04 10:27:07 +03         - man-db.timer                     man-db.service
+Thu 2026-08-06 00:00:00 +03       14h Wed 2026-08-05 08:37:20 +03 37min ago shadow.timer                     shadow.service
+Thu 2026-08-06 00:40:05 +03       15h Wed 2026-08-05 09:00:34 +03 14min ago logrotate.timer                  logrotate.service
+Thu 2026-08-06 08:52:16 +03       23h Wed 2026-08-05 08:52:16 +03 22min ago systemd-tmpfiles-clean.timer     systemd-tmpfiles-clean.service
+Thu 2026-08-06 22:34:59 +03 1 day 13h Fri 2026-07-31 11:34:29 +03         - archlinux-keyring-wkd-sync.timer archlinux-keyring-wkd-sync.service
+Mon 2026-08-10 00:00:00 +03    4 days Mon 2026-08-03 08:26:13 +03         - paccache.timer                   paccache.service
+Mon 2026-08-10 00:32:48 +03    4 days Mon 2026-08-03 09:23:45 +03         - fstrim.timer                     fstrim.service
+Tue 2026-08-11 18:20:19 +03    6 days Sat 2026-08-01 18:20:21 +03         - cachyos-rate-mirrors.timer       cachyos-rate-mirrors.service
+-                                   - -                                   - plocate-updatedb.timer           -

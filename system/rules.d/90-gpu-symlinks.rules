@@ -1,0 +1,5 @@
+# Stable names for the GPUs so AQ_DRM_DEVICES survives card0/card1 reordering.
+# NVIDIA GTX 1650 at PCI 0000:01:00.0, Intel UHD at PCI 0000:00:02.0.
+# Symlink names must NOT contain ":" (aquamarine splits AQ_DRM_DEVICES on it).
+KERNEL=="card*", KERNELS=="0000:01:00.0", SUBSYSTEM=="drm", SYMLINK+="dri/nvidia-card"
+KERNEL=="card*", KERNELS=="0000:00:02.0", SUBSYSTEM=="drm", SYMLINK+="dri/intel-card"

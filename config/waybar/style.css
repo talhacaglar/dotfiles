@@ -1,0 +1,184 @@
+@import "../omarchy/current/theme/waybar.css";
+
+/*
+ * Accent rengi her temanin kendi waybar.css dosyasindan gelir
+ * (@define-color accent ...). Boylece aktif workspace dolgusu temaya
+ * uyumlu olur ve uzerindeki rakam okunur kalir.
+ */
+
+/* --- 1. GENEL AYARLAR --- */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: 'Monaspace Neon';
+    font-size: 11px;
+    min-height: 0;
+}
+
+/* --- 2. PENCERE --- */
+window#waybar {
+    background-color: transparent;
+    color: @foreground;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+/* --- 3. ANA MODÜL TASARIMI (Tek renk, tema uyumlu) --- */
+#workspaces,
+#mpris,
+#clock,
+#custom-voxtype,
+#custom-clar-focus,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator,
+#hardware,
+#tray-expander {
+    background-color: alpha(@accent, 0.18);
+    color: @foreground;
+    border: 1px solid alpha(@accent, 0.22);
+
+    border-radius: 16px;
+    padding: 3px 14px;
+
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --- 4. HOVER EFEKTLERİ --- */
+#mpris:hover,
+#clock:hover,
+#custom-voxtype:hover,
+#custom-clar-focus:hover,
+#custom-idle-indicator:hover,
+#custom-notification-silencing-indicator:hover,
+#hardware:hover,
+#tray-expander:hover {
+    background-color: alpha(@foreground, 0.1);
+    border-color: alpha(@foreground, 0.4);
+}
+
+/* --- 5. MPRIS (Müzik) --- */
+#mpris {
+    font-weight: bold;
+}
+
+#mpris.paused {
+    color: alpha(@foreground, 0.6);
+}
+
+/* --- 6. CLOCK --- */
+#clock {
+    font-weight: 800;
+    padding: 3px 18px;
+}
+
+/* --- 7. WORKSPACES --- */
+#workspaces {
+    padding: 3px 8px;
+}
+
+#workspaces button {
+    padding: 0 2px;
+    margin: 0 4px;
+    border-radius: 50%;
+    min-width: 22px;
+    min-height: 22px;
+    color: @foreground;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    font-weight: bold;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Boş Workspace */
+#workspaces button.empty {
+    color: alpha(@foreground, 0.35);
+}
+
+/* Aktif Workspace - accent (roze) dolgu, koyu okunur metin */
+#workspaces button.active {
+    background-color: @accent;
+    color: @background;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px alpha(@accent, 0.25);
+}
+
+#workspaces button:hover {
+    background-color: alpha(@accent, 0.25);
+    background-image: none;
+    color: @foreground;
+    box-shadow: inset 0 0 0 0 transparent;
+    outline: none;
+}
+
+/* Aktif buton uzerine gelince accent dolgusu korunsun, metin koyu kalsin */
+#workspaces button.active:hover {
+    background-color: @accent;
+    color: @background;
+    box-shadow: 0 0 0 2px alpha(@accent, 0.4);
+}
+
+/* --- 8. DONANIM GRUBU (Hardware Pill) --- */
+#hardware {
+    padding: 3px 6px;
+}
+
+#hardware #pulseaudio,
+#hardware #network,
+#hardware #bluetooth,
+#hardware #battery {
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    padding: 0 10px;
+    border-radius: 0;
+    transition: all 0.2s ease;
+}
+
+#battery.warning,
+#battery.critical {
+    font-weight: bold;
+}
+
+/* --- 9. GÖSTERGELER --- */
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+    padding: 3px 10px;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+    background-color: alpha(@foreground, 0.15);
+}
+
+/* --- 10. TOOLTIP --- */
+tooltip {
+    background-color: @background;
+    border: 1px solid alpha(@foreground, 0.25);
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: 0 4px 6px alpha(#000000, 0.1);
+}
+
+tooltip label {
+    color: @foreground;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    text-shadow: none;
+    padding: 2px 4px;
+    border: none;
+}
+
+/* --- 13. TRAY CHILD --- */
+.tray-child {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
