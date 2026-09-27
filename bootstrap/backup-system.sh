@@ -51,6 +51,7 @@ backup_packages() {
 
 # Backup systemd services
 backup_services() {
+    mkdir -p "$DOTFILES_DIR/services"
     log_info "Backing up systemd services..."
     
     systemctl list-unit-files --state=enabled --no-legend > "$DOTFILES_DIR/services/system-enabled.txt" 2>/dev/null
@@ -62,6 +63,7 @@ backup_services() {
 
 # Backup /etc configs
 backup_etc() {
+    mkdir -p "$DOTFILES_DIR/system"
     log_info "Backing up /etc configurations..."
     
     cp /etc/pacman.conf "$DOTFILES_DIR/system/" 2>/dev/null || true
@@ -95,6 +97,7 @@ backup_fonts() {
 
 # Backup dotfiles (home and .config)
 backup_dotfiles() {
+    mkdir -p "$DOTFILES_DIR/home" "$DOTFILES_DIR/config"
     log_info "Backing up dotfiles..."
     
     # Home dotfiles
