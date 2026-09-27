@@ -33,8 +33,8 @@ backup_packages() {
         log_success "npm packages: $(wc -l < "$DOTFILES_DIR/pkglist-npm.txt")"
     fi
     
-    if command -v pip &>/dev/null || command -v pip3 &>/dev/null; then
-        pip list --format=freeze > "$DOTFILES_DIR/pkglist-pip.txt" 2>/dev/null || pip3 list --format=freeze > "$DOTFILES_DIR/pkglist-pip.txt"
+    if command -v python3 &>/dev/null; then
+        python3 -m pip list --user --format=freeze > "$DOTFILES_DIR/pkglist-pip.txt" 2>/dev/null
         log_success "pip packages: $(wc -l < "$DOTFILES_DIR/pkglist-pip.txt")"
     fi
     

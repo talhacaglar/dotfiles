@@ -132,13 +132,15 @@ install_pip_packages() {
         return
     fi
     
-    if ! command -v pip &>/dev/null && ! command -v pip3 &>/dev/null; then
+    if ! command -v python3 &>/dev/null; then
         log_warning "pip not installed, skipping pip packages"
         return
     fi
     
-    log_info "Installing pip packages..."
-    pip install --user -r "$pkglist" 2>/dev/null || pip3 install --user -r "$pkglist"
+    local pip_venv="$HOME/.local/share/dotfiles-python"
+    log_info "Installing pip packages in $pip_venv..."
+    python3 -m venv --system-site-packages "$pip_venv"
+    "$pip_venv/bin/python" -m pip install -r "$pkglist"
     log_success "pip packages installed"
 }
 
