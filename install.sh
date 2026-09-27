@@ -67,7 +67,8 @@ install_home_dotfiles() {
         return
     fi
 
-    for file in "$home_src"/*; do
+    # Include dotfiles without changing the caller's glob options.
+    for file in "$home_src"/* "$home_src"/.[!.]* "$home_src"/..?*; do
         [[ -e "$file" ]] || continue
         local basename="$(basename "$file")"
         create_symlink "$file" "$HOME/$basename"
