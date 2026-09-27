@@ -29,7 +29,7 @@ backup_packages() {
     log_success "AUR packages: $(wc -l < "$DOTFILES_DIR/pkglist-aur.txt")"
     
     if command -v npm &>/dev/null; then
-        npm list -g --depth=0 2>/dev/null | tail -n +2 | sed 's/[├└─]//g' | sed 's/──//g' | awk '{print $1}' | sed 's/@.*$//' > "$DOTFILES_DIR/pkglist-npm.txt"
+        npm list -g --depth=0 2>/dev/null | tail -n +2 | sed 's/[├└─]//g' | sed 's/──//g' | awk '{print $1}' | sed 's/@[^@]*$//' > "$DOTFILES_DIR/pkglist-npm.txt"
         log_success "npm packages: $(wc -l < "$DOTFILES_DIR/pkglist-npm.txt")"
     fi
     
