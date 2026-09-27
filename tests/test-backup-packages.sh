@@ -7,7 +7,14 @@ trap 'rm -rf "$test_dir"' EXIT
 DOTFILES_DIR="$test_dir"
 log_info() { :; }
 log_success() { :; }
-pacman() { :; }
+pacman() {
+    case "$1" in
+        -Qen) echo 'native 1.0';;
+        -Qm) echo 'foreign 2.0';;
+        -Qe) printf '%s\n' 'native 1.0' 'foreign 2.0';;
+        *) return 1;;
+    esac
+}
 npm() { printf '%s\n' '/usr/lib' '├── @scope/tool@1.2.3' '└── plain@4.5.6'; }
 pip() { :; }
 pip3() { :; }
@@ -16,4 +23,6 @@ flatpak() { :; }
 backup_packages
 expected=$(printf '%s\n' '@scope/tool' 'plain')
 [[ "$(cat "$test_dir/pkglist-npm.txt")" == "$expected" ]]
-echo 'npm backup: PASS (scoped and plain package names)'
+[[ "$(cat "$test_dir/pkglist-pacman.txt")" == 'native 1.0' ]]
+[[ "$(cat "$test_dir/pkglist-aur.txt")" == 'foreign 2.0' ]]
+echo 'package backup: PASS (scoped npm names and native/foreign separation)' 

@@ -22,7 +22,7 @@ log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
 backup_packages() {
     log_info "Backing up package lists..."
     
-    pacman -Qe > "$DOTFILES_DIR/pkglist-pacman.txt"
+    pacman -Qen > "$DOTFILES_DIR/pkglist-pacman.txt"
     log_success "Pacman packages: $(wc -l < "$DOTFILES_DIR/pkglist-pacman.txt")"
     
     pacman -Qm > "$DOTFILES_DIR/pkglist-aur.txt"
