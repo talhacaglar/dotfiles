@@ -39,7 +39,7 @@ backup_packages() {
     fi
     
     if command -v cargo &>/dev/null; then
-        cargo install --list 2>/dev/null | grep -E '^[a-z0-9_-]+ v[0-9]' | awk '{print $1}' > "$DOTFILES_DIR/pkglist-cargo.txt"
+        cargo install --list 2>/dev/null | awk '/^[a-z0-9_-]+ v[0-9]/ {print $1}' > "$DOTFILES_DIR/pkglist-cargo.txt"
         log_success "cargo packages: $(wc -l < "$DOTFILES_DIR/pkglist-cargo.txt")"
     fi
     

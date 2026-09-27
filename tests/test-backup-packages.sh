@@ -25,4 +25,7 @@ expected=$(printf '%s\n' '@scope/tool' 'plain')
 [[ "$(cat "$test_dir/pkglist-npm.txt")" == "$expected" ]]
 [[ "$(cat "$test_dir/pkglist-pacman.txt")" == 'native 1.0' ]]
 [[ "$(cat "$test_dir/pkglist-aur.txt")" == 'foreign 2.0' ]]
-echo 'package backup: PASS (scoped npm names and native/foreign separation)' 
+cargo() { :; }
+backup_packages
+[[ ! -s "$test_dir/pkglist-cargo.txt" ]]
+echo 'package backup: PASS (npm, native/foreign, empty cargo)'
